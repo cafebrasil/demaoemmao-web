@@ -1,0 +1,197 @@
+<form name="form" ng-submit="vm.novo();">
+    <div ng-show="vm.sucess">
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Sucesso:</span>
+            {{vm.sucess.mensagem}}
+        </div>
+    </div>
+
+    <div ng-show="vm.error">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{vm.error.mensagem}}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cadastro do Livro</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input id="titulo" name="titulo" type="text"
+                       ng-model="vm.book.titulo" placeholder="Título do livro"
+                       class="form-control" size="150" title="Informe o título do livro"/>
+            </div>
+            <div class="form-group">
+                <label for="isbn">Número ISBN:</label>
+                <input id="isbn" class="form-control" type="text"
+                       ng-model="vm.book.isbn" placeholder="Número do ISBN" size="12"
+                       title="Informe o número do ISBN"/>
+            </div>
+            <div class="form-group">
+                <label for="edicao">Edição:</label>
+                <input id="edicao" type="text"
+                       ng-model="vm.book.edicao" placeholder="Edição do livro"
+                       class="form-control" size="150" title="Informe a edição do livro"/>
+            </div>
+            <div class="form-group">
+                <label for="numeroPaginas">Número de Páginas:</label>
+                <input id="numeroPaginas" type="text"
+                       ng-model="vm.book.numeroPaginas" placeholder="Número de páginas do livro"
+                       class="form-control" size="150" title="Informe o número de páginas do livro"/>
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso:</label>
+                <input id="peso" type="text"
+                       ng-model="vm.book.peso" placeholder="Peso do livro"
+                       class="form-control" size="150" title="Informe o peso do livro"/>
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor:</label>
+                <input id="autor" type="text"
+                       ng-model="vm.book.autor" placeholder="Informe o Autor ou Autores deste livro"
+                       class="form-control" size="150" title="Informe o Autor ou Autores deste livro"/>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <div class="input-group">
+                            <input class="form-control" id="assunto" name="assunto" type="text" ng-model="vm.tag"
+                                   placeholder="Assunto(s) do livro" size="150" title="Informe o assunto do livro"/>
+                            <span id="btnAddTag" class="input-group-addon" ng-click="vm.addTag(vm.tag);">
+                            <span class="glyphicon glyphicon-plus"/>
+                        </span>
+                        </div>
+                    </div>
+                    <div ng-show="vm.tags.length > 0">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="panel-title">Assuntos</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <!--thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Autor</th>
+                                        </tr>
+                                    </thead -->
+                                    <tbody>
+                                    <tr ng-repeat="tag in vm.tags">
+                                        <td>
+                                            <button class="btn btn-default glyphicon glyphicon-trash btn-sm"
+                                                    ng-click='vm.removeTag(tag)'
+                                                    title="Remover Assunto" type="button">
+                                            </button>
+                                        </td>
+                                        <td style="vertical-align: middle" width="99%" class="text-left">
+                                            {{tag.tag.descricao}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <!--tfoot></tfoot-->
+                                </table>
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="autor">Autor(es)</label>
+                        <div class="input-group">
+                            <input class="form-control" id="autor" type="text" ng-model="vm.autor"
+                                   placeholder="Autor(es) do livro" size="150" title="Informe os autor(es) do livro"/>
+                            <span id="btnAddAutor" class="input-group-addon" ng-click="vm.addAutor(vm.autor)">
+                                <span class="glyphicon glyphicon-plus">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div ng-show="vm.autores.length > 0">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <span class="panel-title">Autores</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr ng-repeat="autor in vm.autores">
+                                        <td>
+                                            <button class="btn btn-default glyphicon glyphicon-trash btn-sm"
+                                                    id="{{'contato' + autor.id}}"
+                                                    ng-click='vm.removeAutor(autor)'
+                                                    title="Remover Autor" type="button">
+                                            </button>
+                                        </td>
+                                        <td style="vertical-align: middle" width="99%" class="text-left">
+                                            {{autor.nome}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="panel-footer" style="padding: 2px">
+            <button class="btn btn-default btn-sm" type="submit"> Salvar</button>
+            <button class="btn btn-default btn-sm" ui-sref="listar" type="button">Cancelar</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    var tags = "";
+    $("#assunto").autocomplete({
+        source: function (request,response) {
+
+        }
+
+//            function (request, response) {
+//                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//                response($.grep(tags, function (item) {
+//                    return matcher.test(item);
+//                }));
+//            }
+    });
+
+    $(document).ready(function () {
+        $("#assunto").click(function () {
+            $("#assunto").val("");
+            $("#assunto").removeClass("error");
+        });
+    });
+    $(document).ready(function () {
+        $("#btnAddTag").click(function(event) {
+            if($("#assunto").val().trim() === "" || $("#assunto").val() === ""){
+                $("#assunto").addClass("error");
+            }
+        });
+    });
+/**
+    $(document).ready(function () {
+        $("#autor").click(function () {
+            $("#autor").val("");
+            $("#autor").removeClass("error");
+        });
+    });
+    $(document).ready(function () {
+        $("#btnAddAutor").click(function(event) {
+            if($("#autor").val().trim() === "" || $("#assunto").val() === ""){
+                $("#autor").addClass("error");
+            }
+        });
+    });*/
+</script>

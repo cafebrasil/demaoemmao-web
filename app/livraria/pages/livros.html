@@ -1,0 +1,69 @@
+<form name="form">
+    <div ng-show="vm.error">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{vm.error.mensagem}}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="panel form-group">
+                <div class='input-group'>
+                    <input class="form-control" ng-model="vm.book.descricao" type="text"
+                           name="descricao" id="descricao" maxlength="200"
+                           placeholder="Pesquise por @Autor ou @Titulo">
+                    <span id="find" class="input-group-addon" ng-click="vm.pesquisar(vm.book.descricao);">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default" style="padding: 1px" ng-repeat="book in vm.books">
+            <div class="panel-heading"  data-parent="#accordion" data-toggle="collapse"
+                 data-target="{{'#collapse' + book.codigo}}" aria-controls="{{'collapse' + book.codigo}}"
+                 id="{{'heading' + book.codigo}}" href="{{'#collapse' + book.codigo}}">
+                <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                    {{book.titulo}}
+                </h4>
+            </div>
+            <div style="padding: 2px"  id="{{'collapse' + book.codigo}}" class="panel-collapse collapse">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="padding: 2px">
+                        <div class="form-group" >
+                            <label for="titulo">Titulo:</label>
+                            <span id="titulo">{{book.titulo}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="isbn">Isbn:</label>
+                            <span id="isbn">{{book.isbn}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="autores">Autor(es):</label>
+                            <span id="autores">{{book.autor}}</span>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="padding: 2px;">
+                        <button class="btn btn-default btn-sm" type="button"
+                                ng-model="vm.book"
+                                title="Completar Informações do Livro em destaque"
+                                ng-click="vm.edit(book);">Atualize</button>
+                        <button class="btn btn-default btn-sm" type="button">Devolver</button>
+
+                        <button class="btn btn-default btn-sm" type="button"
+                                ng-model="vm.book"
+                                title="Pegar o livro emprestado"
+                                ng-click="vm.emprestar(book);">Eu Quero</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

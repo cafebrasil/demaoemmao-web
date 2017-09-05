@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="demaoemmao"  class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="demaoemmao" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="demaoemmao" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <div lang="en"  ng-app="demaoemmao" class="no-js" /> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Confraria Café Brasil</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+    <link rel="stylesheet" href="app.css">
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-loader/angular-loader.js"></script>
+
+
+    <script src="app.js"></script>
+    <script src="livraria/livraria.routes.js"></script>
+    <script src="livraria/livraria.controller.js"></script>
+    <script src="livraria/livraria.service.js"></script>
+    <script src="quemsomos/quemsomos.routes.js"></script>
+    <script src="cultura/cultura.routes.js"></script>
+
+
+<script>
+    $(document).on( 'click','.navbar-nav li',
+        function(e) {
+            $(this).addClass('selecionado')
+            .siblings().removeClass( 'selecionado' );
+    });
+
+//    $(document).on('hover','navbar-nav li ',function () {
+//        if ($('div.navbar-collapse').hasClass('in')) {
+//            $('button.navbar-toggle:visible').click();
+//        }
+//    })
+
+    $(document).ready(function () {
+        $(".nav a, .navbar-header a").click(function(event) {
+            $(".navbar-collapse").removeClass("in").addClass("collapse");
+        });
+    });
+
+</script>
+    <style>
+        .selecionado{
+            font-weight: bolder;
+
+        }
+        /*a:active a:hover{*/
+            /*font-weight: bolder;*/
+            /*background: lightgrey;*/
+        /*}*/
+        .navbar-brand{
+            padding: 0px;
+            margin-left: 20px;
+        }
+        .container-fluid{
+            /*margin: 2px;*/
+            /*padding: 0px;*/
+        }
+        .panel-title{
+            font-size: 12px;
+        }
+        .panel-body{
+            /*padding: 2px;*/
+        }
+        .form-group{
+            /*margin: 4px;*/
+        }
+        .error{
+            border: 1px solid #ff3204;
+        }
+        table td {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+
+
+</head>
+    <body>
+        <header>
+
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="nav navbar-header">
+                        <button type="button" class="navbar-toggle"
+                                data-toggle="collapse" data-target="#links">
+                            <span class="sr-only"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" ui-sref="listar" ui-sref-opts="{reload: true}">
+                            <img alt="" width="45" height="45" src="img/icon.png">
+                        </a>
+                    </div>
+                    <form>
+                        <div class="collapse navbar-collapse" id="links">
+                            <ul class="nav navbar-nav">
+                                <li><a ui-sref="listar" ui-sref-opts="{reload: true}">Livraria</a></li>
+                                <li><a ui-sref="novo" ui-sref-opts="{reload: true}">Novo Livro</a></li>
+                                <li><a ui-sref="cultura" ui-sref-opts="{reload: true}">Dicas Culturais</a> </li>
+                                <li><a ui-sref="quemsomos" ui-sref-opts="{reload: true}">Quem Somos</a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <ui-view></ui-view>
+        </div>
+        <!--div class="page-header">
+        </div-->
+    </body>
+</html>
